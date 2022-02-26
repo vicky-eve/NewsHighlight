@@ -10,5 +10,15 @@
     </head>
     <body>
             <p>{% message1%}</p>
+            {% block content %}
+
+<div class="container">
+    <form>
+        <input type="text" name="articles_query" placeholder="Search for an article" class="form-control">
+        <input type="submit"  value="Submit" class="btn btn-default">
+    </form>
+
+</div>
+
     </body>
 </html>

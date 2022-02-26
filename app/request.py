@@ -97,3 +97,18 @@ def process_results(articles_list):
             articles_results.append(articles_object)
 
     return articles_results
+
+def search_articles(articles_name):
+    search_articles_url = 'https://newsapi.org/v2/search?sources={}&apiKey={}'.format(api_key,articles_name)
+    with urllib.request.urlopen(search_articles_url) as url:
+        search_articles_data = url.read()
+        search_articles_response = json.loads(search_articles_data)
+
+        search_articles_results = None
+
+        if search_articles_response['results']:
+            search_articles_list = search_articles_response['results']
+            search_articles_results = process_results(search_articles_list)
+
+
+    return search_articles_results
