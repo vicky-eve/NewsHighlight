@@ -3,9 +3,23 @@ from .models import Source
 from .models import Articles
 import urllib.request, json   #to aid in reading api data
 
+# Getting api key
+api_key = None
+# Getting the  base url
+source_url = None
+articles_url = None
+
+
 api_key =app.config('NEWS_API_KEY') #how to get the api key
 NEWS_API_SOURCES_URL = 'https://newsapi.org/v2/sources?apiKey={}'
 NEWS_API_ARTICLES_URL = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey={}'
+
+def configure_request(app):            #takes in the application instance and replaces the values of the None variables to application configuration objects
+    global api_key, source_url, articles_url
+    source_url = app.config['NEWS_API_SOURCES_URL']
+    articles_url = app.config['NEWS_API_ARTICLES_URL']
+    api_key = app.config['NEWS_API_KEY']
+
 
 def get_source(category):           #function that takes in the category argument
     '''
