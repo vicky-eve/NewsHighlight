@@ -1,0 +1,95 @@
+
+  
+{% import 'macros.html' as macro%}
+{% import "bootstrap/wtf.html" as wtf %}
+<div class="row">
+    <div class="col-md-6">
+              <h1 id="title" style="font-size: 30px; margin:3px;">AFRICAPOST</h1>
+    </div>
+    <div class="col-md-6" style="float: right; width: auto;">
+        {{ wtf.quick_form(search_form,form_type="inline") }}
+    </div>
+</div>
+<div class="row" style="margin-top: 20px;">
+        {{ macro.searchNews(news)}}
+</div>
+<div class="row">
+        <div id="sources" class="news slide" data-ride="news">
+                <div class="news-inner"style="font-size:15px;">
+                  {% for source in sources %}
+                  <div class="news-item {% if loop.index == 1 %}active{% endif %}">
+                    <p style="padding-left:5px;text-align:center;">{{source.description}} ({{source.country}})
+                        <a href="{{source.url}}" class="btn">{{source.name}}</a>
+                    </p>
+                  </div>
+                  {% endfor %}
+                </div>
+              </div>
+</div>
+<div class="row" style="margin-left:100px;">
+    <h2>Top Headlines</h2> 
+</div>
+<div class="row" id="headlines">
+        <div id="newsExampleControls" class="news slide" data-ride="news" class="col-md-8">
+                <div class="news-inner">
+                  {% for article in articles %}
+                  <div class="news-item {% if loop.index == 1 %}active{% endif %}">
+                    <img class="d-block w-100" src={{article.urlToImage}}
+                      alt="Current Slide" style="width: 760px;height: 400px;">
+                      <div class="news-caption">
+                            <h4>{{article.title}}</h4>
+                            <p>{{article.content}} <a class="label label-primary" href="article.url" target="_blank">Read the entire article...</a></p>
+                    </div>
+                  </div>
+                  {% endfor %}
+                </div>
+                <a class="news-control-prev" href="#newslExampleControls" role="button" data-slide="prev">
+                  <span class="news-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Previous</span>
+                </a>
+                <a class="news-control-next" href="#newslExampleControls" role="button" data-slide="next">
+                  <span class="news-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </div>
+              <div class="card" style="width:400px;margin-top:0;" class="col-md-4">
+                <div  class ="card-body" style="overflow-y: scroll;">
+                    <ul class="list-group list-group-flush">
+                        {% for headline in headlines %}
+                        <a href="{{headline.url}}">
+                            <li class="list-group-item" style="font-size:16px;border-bottom: 1px;">{{headline.title}}<br>Author: {{headline.author}}</li>
+                        </a>
+                        {% endfor %}
+                     </ul>
+                </div>
+              </div>
+</div>
+<div class="wrapper" style="margin-left: 100px; margin-top:10px; ">
+    <div class="row">
+        <div class="col-md-6">
+            <i class="fas fa-star"></i>
+            <h2 style="margin-left:50px;">Technology</h2>
+            {{ macro.displayNews(technology)}}
+        </div>
+        <div class="col-md-6">
+            <i class="fas fa-star"></i>
+            <h2 style="margin-left:50px;">Sports</h2>
+            {{ macro.displayNews(sports)}}
+        </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+          <i class="fas fa-star"></i>
+          <h2 style="margin-left:50px;">Politics</h2>
+          {{ macro.displayNews(politics)}}
+      </div>
+      <div class="col-md-6">
+          <i class="fas fa-star"></i>
+          <h2 style="margin-left:50px;">Entertainment</h2>
+          {{ macro.displayNews(entertainment)}}
+      </div>
+    </div>
+</div>
+<dic class="wrapper" style="background-color:#ef767a; ">
+<h6 style="text-align: center;"></h6>
+</div>

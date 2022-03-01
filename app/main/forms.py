@@ -1,7 +1,8 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,TextAreaField,SubmitField
-from wtforms.validators import Required
+from wtforms import StringField,SubmitField
+#from wtforms.validators import Required
 
-class ReviewForm(FlaskForm):
+class SearchForm(FlaskForm):
 
-    submit = SubmitField('SEarch')
+    #search = StringField('Search for News',validators=[Required()])
+    submit = SubmitField('Search')

@@ -1,1 +1,21 @@
-<h1>{% message2 %}</h1>
+{% extends "base.html" %}
+{% import 'macros.html' as macro%}
+
+{% block styles%}
+    {{ super() }}
+    
+{% endblock %}
+
+{% block content %}
+<div class="container-fluid">
+
+   <h2 class="text-center">  News Articles <br> {{ title }} </h2>
+
+   <div class="row">
+
+      {{ macro.displayArticlesList(articles) }}
+
+   </div>
+
+</div>
+{% endblock %}

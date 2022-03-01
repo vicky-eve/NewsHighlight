@@ -1,8 +1,7 @@
-from app import app
-from ..request import get_source , get_articles, search_articles
-from flask import render_template , request,redirect,url_for          #import render template since i'll need to render a template
-from .forms import ReviewForm
+from flask import render_template
 from . import main
+
+from ..requests import get_sources,get_articles
 
 
 @main.route('/')
@@ -12,27 +11,18 @@ def index():
     View root page function that returns the index page and its data
     '''
 
+    
+    popular_source = get_sources()
 
-    # Getting popular movie
-    popular_source = get_source()
-    print(popular_source)
-    title = 'Home - Welcome to The best NewsHighlight website'
-    return render_template('index.html', title=title, message1 = popular_source)
+    
+    
 
-@main.route('/articles/<articles_id>')
-def articles(articles_id):
-    articles = get_articles(articles_id)
+    title = 'Home - Welcome to Online News Website'
+    return render_template('index.html', title = title, popular_sources = popular_source )
+
+@main.route('/articles/<sources_id>')
+def articles(sources_id):
+    articles = get_articles(sources_id)
     print(articles)
 
-    return render_template('art.html', message2 = articles)
-
-@main.route('/search/<artcles_name>')
-def search(articles_name):      #dynamic variable
-    '''
-    View function to display the search results
-    '''
-    articles_name_list = articles_name.split(" ")
-    articles_name_format = "+".join(articles_name_list)
-    searched_articles = search_articles(articles_name_format)
-    title = f'search results for {articles_name}'
-    return render_template('search.html',movies = searched_articles)
+    return render_template('articles.html',articles = articles)
