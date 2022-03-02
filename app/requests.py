@@ -22,7 +22,7 @@ def get_sources():
     '''
     Function that gets the json response to url request
     '''
-    get_sources_url= 'https://newsapi.org/v2/sources?apiKey=ea1ea4db45ad44dbb126fe10de6b89fe'
+    get_sources_url= 'https://newsapi.org/v2/sources?apiKey=aa251654e1b04b0d9917f813d99cb1a9'
     with urllib.request.urlopen(get_sources_url) as url:
         get_sources_data = url.read()
         get_sources_response = json.loads(get_sources_data)
@@ -85,7 +85,7 @@ def get_articles(sources_id):
     '''
         Function that gets the json response to our url request using the source id
     '''
-    get_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=ea1ea4db45ad44dbb126fe10de6b89fe'.format(
+    get_articles_url = 'https://newsapi.org/v2/top-headlines?sources={}&apiKey=aa251654e1b04b0d9917f813d99cb1a9'.format(
         sources_id, api_key)
     with urllib.request.urlopen(get_articles_url) as url:
         get_articles_data = url.read()
