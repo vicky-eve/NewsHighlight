@@ -27,13 +27,13 @@ There are no known bugs currently but pull requests are allowed incase you spot 
 
 To fix a bug or enhance an existing module, follow these steps:
 
-Fork the repo
-Create a new branch (git checkout -b improve-feature)
-Make the appropriate changes in the files
-Add changes to reflect the changes made
-Commit your changes (git commit -am 'Improve feature')
-Push to the branch (git push origin improve-feature)
-Create a Pull Request
+ * Fork the repo
+* Create a new branch (git checkout -b improve-feature)
+* Make the appropriate changes in the files
+* Add changes to reflect the changes made
+* Commit your changes (git commit -am 'Improve feature')
+* Push to the branch (git push origin improve-feature)
+* Create a Pull Request
 
 ## Setting up the API Key
 * To be able to gather article info from the News API you will need an API Key.
